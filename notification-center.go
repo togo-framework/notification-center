@@ -62,7 +62,7 @@ type Service struct {
 }
 
 func init() {
-	togo.RegisterProviderFunc("notification-center", togo.PriorityService, func(k *togo.Kernel) error {
+	togo.RegisterProviderFunc("notification-center", togo.PriorityLate+10, func(k *togo.Kernel) error {
 		s := &Service{k: k, store: newMemStore()}
 		k.Set("notification-center", s)
 		if k.Router != nil {
